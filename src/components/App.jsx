@@ -1,4 +1,4 @@
-import react, { Component } from 'react';
+import { Component } from 'react';
 import styled from 'styled-components';
 import List from './List';
 import ContactForm from './Form';
@@ -60,6 +60,7 @@ class App extends Component {
     contacts.map(contact => {
       if (contact.name.toLowerCase().includes(filter.toLowerCase())) {
         filteredContacts.push(contact);
+        return;
       }
     });
 

@@ -1,4 +1,4 @@
-import react, { Component } from 'react';
+import { Component } from 'react';
 import { nanoid } from 'nanoid';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
