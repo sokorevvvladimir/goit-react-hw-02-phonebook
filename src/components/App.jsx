@@ -35,10 +35,6 @@ class App extends Component {
     }
   };
 
-  transferFilterState = () => {
-    return this.state.filter;
-  };
-
   onInputHandler = e => {
     this.setState({ filter: e.currentTarget.value });
   };
@@ -53,15 +49,16 @@ class App extends Component {
     }));
   };
 
-  render() {
+  getFilteredContacts = () => {
     const { contacts, filter } = this.state;
-    let filteredContacts = [];
+    const normalizedFilter = filter.toLowerCase();
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
+  };
 
-    contacts.map(contact => {
-      if (contact.name.toLowerCase().includes(filter.toLowerCase())) {
-        filteredContacts.push(contact);
-      }
-    });
+  render() {
+    const filteredContacts = this.getFilteredContacts();
 
     return (
       <Container>
@@ -71,7 +68,7 @@ class App extends Component {
         <Filter
           onFilterInput={this.onInputHandler}
           onBlur={this.filterReset}
-          onValue={this.transferFilterState}
+          value={this.state.filter}
         />
         {this.state.contacts.length > 0 ? (
           <List contacts={filteredContacts} onDelete={this.onDeleteHandle} />

@@ -17,8 +17,7 @@ const Input = styled.input`
   }
 `;
 
-const Filter = ({ onFilterInput, onBlur, onValue }) => {
-  const value = onValue();
+const Filter = ({ onFilterInput, onBlur, value }) => {
   return (
     <Label>
       Find contacts by name
@@ -37,5 +36,5 @@ export default Filter;
 Filter.propTypes = {
   onFilterInput: PropTypes.func.isRequired,
   onBlur: PropTypes.func.isRequired,
-  onValue: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
 };
