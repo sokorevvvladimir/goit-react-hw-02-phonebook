@@ -60,7 +60,6 @@ class App extends Component {
     contacts.map(contact => {
       if (contact.name.toLowerCase().includes(filter.toLowerCase())) {
         filteredContacts.push(contact);
-        return;
       }
     });
 
